@@ -16,3 +16,13 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 ### 系统调用从用户态进入内核态，操作系统会做哪些细节操作？这些操作对系统开销有哪些影响？ （Accept）
 
 ### json和dict有什么区别？（Reject）
+
+## Algorithm
+
+* [bfs](./theory/bfs.md)
+
+## Tools
+
+* [git](./tools/git.md)
+
+  
