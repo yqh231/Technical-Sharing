@@ -20,7 +20,7 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 ## Algorithm
 
 * [bfs](./theory/bfs.md)
-* [dfs(continuous_updating)](./theory/dfs(Continuous_updating).md)
+* [dfs(Continuous_updating)](./theory/dfs(Continuous_updating).md)
 
 ## Tools
 
