@@ -97,3 +97,10 @@ git clone 的工程带有submodule时,因为并不会自动去拉取子模块
 `git commit --allow-empty -m "Trigger notification"`
 
 commit是允许没任何变更的
+
+## 一个项目多个branch，其中落后于master。同步master的改动，用rebase还是merge好？
+rebase会让代码线干净，但是时间线可能会乱。
+merge不影响其他分支，若是rebase后一但merge进master，就会影响其他分支。
+长期分支只对bugfix做cherry pick
+短期分支一律用rebase， master一律用merge
+
