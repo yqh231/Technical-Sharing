@@ -22,6 +22,10 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 * [bfs](./theory/algorithm/bfs.md)
 * [dfs(Continuous_updating)](./theory/algorithm/dfs(Continuous_updating).md)
 
+## paper
+
+* [日志-每个软件工程师都应该知道的有关实时数据的统一抽象](./theory/paper/index.md#日志-每个软件工程师都应该知道的有关实时数据的统一抽象)
+
 ## Tools
 
 * [git](./tools/git.md)
