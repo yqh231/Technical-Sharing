@@ -176,6 +176,56 @@ class Solution:
 
 [烂橘子](https://leetcode-cn.com/problems/rotting-oranges/)
 
+```
+01矩阵
+
+给定一个由 0 和 1 组成的矩阵，找出每个元素到最近的 0 的距离。
+
+两个相邻元素间的距离为 1 。
+
+输入:
+
+0 0 0
+0 1 0
+1 1 1
+
+输出:
+
+0 0 0
+0 1 0
+1 2 1
+```
+
+分析
+
+> 这个问题也是典型的多源广搜，我第一次做是找到1的起始位置，然后向外扩散。这种做法是可行的，但是存在问题。这样推导，自顶向下，从1找到0，也就是说在找到0之前不知道距离是多少。这样就会导致时间复杂度高。所以需要从0开始，往上查找，自底向上。这样中间过程，找到的距离都是确定的。
+
+实现
+
+```
+class Solution:
+    def updateMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
+        m, n = len(matrix), len(matrix[0])
+        dist = [[0] * n for _ in range(m)]
+        zeroes_pos = [(i, j) for i in range(m) for j in range(n) if matrix[i][j] == 0]
+        q = collections.deque(zeroes_pos)
+        seen = set(zeroes_pos)
+
+        while q:
+            i, j = q.popleft()
+            for ni, nj in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
+                if 0 <= ni < m and 0 <= nj < n and (ni, nj) not in seen:
+                    dist[ni][nj] = dist[i][j] + 1
+                    q.append((ni, nj))
+                    seen.add((ni, nj))
+        
+        return dist
+```
+
+练习
+
+[01矩阵](https://leetcode-cn.com/problems/01-matrix/)
+
 
 ### 3. 权重广度搜索
 
