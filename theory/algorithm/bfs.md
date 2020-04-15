@@ -17,7 +17,7 @@ while len(q) > 0:
     doSomethine(ele)
 
     for el in findAround(ele):
-        q.append(ele)
+        q.append(el)
 ```
 
 这段伪码是最核心的广度搜索代码，所有的广度搜索都是这段代码推演而来。广度搜索依赖于队列，需要对自己常用语言的队列实现熟练掌握。我们先将第一个元素推入队列，然后将其拿出，遍历这个元素周围的元素，将其推入队列。反复进行这个过程，直到队列为空。
@@ -203,7 +203,7 @@ id = 2 的员工将在 5 分钟内通知 id = 1 的员工。
 id = 1 的员工将在 6 分钟内通知 id = 0 的员工。
 所需时间 = 1 + 2 + 3 + 4 + 5 + 6 = 21 。
 ```
-[通知所有员工所需时间](https://leetcode-cn.com/problems/time-needed-to-inform-all-employees/)
+![通知所有员工所需时间](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/03/08/1730_example_3_5.PNG)
 
 分析
 
