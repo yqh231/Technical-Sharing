@@ -30,4 +30,7 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 
 * [git](./tools/git.md)
 
+## Language
+
+* [Go并发原语](./theory/language/Go并发原语.md)
   
