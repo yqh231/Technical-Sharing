@@ -32,6 +32,7 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 
 ## Language
 
-* [Go并发函数式编程](./theory/language/Go函数式编程.md)
+* [Go函数式编程](./theory/language/Go函数式编程.md)
 * [Go并发原语](./theory/language/Go并发原语.md)
+* [Go并发模型](./theory/language/Go并发模型.md)
   
