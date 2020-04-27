@@ -335,6 +335,120 @@ func dfs(nums []int, result *[][]int, depth int) {
 [全排列](https://leetcode-cn.com/problems/permutations/submissions/)
 
 
+## 记忆化回溯
+
+暴力dfs会遍历所有的情况，时间复杂度很高。在遍历过程中，往往会遇到前面已经计算出结果的情形，可以考虑保存遍历的每一步结果。以减少时间复杂度。
+
+### 模板代码
+```python
+"""
+这里用一个字典保存计算结果，遇到计算过得情景，直接返回。
+"""
+def dfs(n, memo):
+    if n in memo:
+        return memo[n]
+    
+    doSomething()
+    res = dfs(func(n), memo)
+    memo[n] = res  
+```
+
+```
+零钱兑换
+
+给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+
+输入: coins = [1, 2, 5], amount = 11
+输出: 3 
+解释: 11 = 5 + 5 + 1
+
+输入: coins = [2], amount = 3
+输出: -1
+```
+
+分析：
+这个题有多种做法，dfs和动态规划都可以解决。可以这样考虑，总额为`amount`，每次从总额里面减去某一硬币额度，我们尝试所有情况，直至额度为0。
+
+```python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        memo = {}
+        result = self.dfs(amount, coins, memo)
+
+        return -1 if result == float('inf') else result
+
+    def dfs(self, n, coins, memo):
+        if n == 0:
+            return 0
+        if n in memo:
+            return memo[n]
+        result = float('inf')
+        for c in coins:
+            if c <= n:
+                result = min(self.dfs(n-c, coins, memo) + 1, result)
+
+        memo[n] =result
+        return result
+```
+练习:
+[零钱兑换](https://leetcode-cn.com/problems/coin-change/)
+
+记忆化回溯，往往会遇到去重的问题。因为我们尝试了所有的情况，有些情况不满足题意，需要舍去。看下面这个例子
+
+```
+硬币
+
+硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)
+
+ 输入: n = 5
+ 输出：2
+ 解释: 有两种方式可以凑成总金额:
+5=5
+5=1+1+1+1+1
 
 
+ 输入: n = 10
+ 输出：4
+ 解释: 有四种方式可以凑成总金额:
+10=10
+10=5+5
+10=5+1+1+1+1+1
+10=1+1+1+1+1+1+1+1+1+1
+```
+分析:
+总体思路和刚才一样，不同点在于。按上面的做法，会产生`10=5+1+1+1+1+1`, `10=1+1+1+1+1+5`，这两个会同一种情况，需要去重。
+
+```go
+var nums = []int{1, 5, 10, 25}
+
+func waysToChange(n int) int {
+    memo := make(map[int]int)
+
+    return dfs(n, 0, memo) % 1000000007
+}
+
+func dfs(n, start int, memo map[int]int) int{
+        if n == 0{
+            return 1
+        }
+        if n < 0 {
+            return 0
+        }
+        if v, ok := memo[n];ok{
+            return v
+        }
+        count := 0
+        /* 
+        start用来确保硬币额度是递增，这样其序列只有可能是10=1+1+1+1+1+5。另外一种情况不会出现
+        
+        */
+        for i := start; i < len(nums); i++ {
+            count += dfs(n-nums[i],i, memo)
+        }
+
+        return count
+    }
+```
+练习:
+[硬币](https://leetcode-cn.com/problems/coin-lcci/)
 
