@@ -21,6 +21,7 @@ But if you have an idea and I have an idea,and we exchange ideas,we each now hav
 
 * [bfs](./theory/algorithm/bfs.md)
 * [dfs(Continuous_updating)](./theory/algorithm/dfs(Continuous_updating).md)
+* [背包问题](./theory/algorithm/背包问题.md)
 
 ## paper
 
